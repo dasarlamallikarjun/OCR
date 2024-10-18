@@ -1,0 +1,124 @@
+<SmoothButton@Button>:
+	background_color:(0,0,0,0)
+	background_normal:''
+	back_color: (0,0,0,1)
+	border_radius: [18]
+	canvas.before:
+		Color:
+			rgba: self. back_color
+		RoundedRectangle:
+			size: self.size
+			pos: self.pos
+			radius: self.border_radius
+<StrokeButton@Button>:
+	background_color:(0,0,0,0)
+	background_normal:''
+	back_color: (0,0,0,1)
+	border_radius: 18
+	color: self.back_color
+	canvas.before:
+		Color:
+			rgba: self. back_color
+		Line:
+			rounded_rectangle: (self.pos[0], self.pos[1],self.size[0],self.size[1] , self.border_radius)
+			width: 1.2
+
+<StartPage>:
+	id:start
+	FloatLayout:
+		canvas.before:
+			BorderImage:
+				source:'Images/bg-1.png'
+				pos:self.pos
+				size:self.size
+		Image:
+			id:img
+			size_hint:(.6,.6)
+			pos_hint:{'x':.2,'y':.4}  if start.ids.img.source!='' else {'x':.45,'y':.5}
+			source:''
+		StrokeButton: 
+			id:browse
+			text:'Browse'
+			size_hint:(.15,.07)
+			pos_hint:{'x':.2,'y':.3}
+			on_release:start.browse_button(start.ids.browse)
+		StrokeButton:
+			id:online
+			text:'Online'
+			size_hint:(.15,.07)
+			pos_hint:{'x':.7,'y':.3}
+			on_press: self.background_color = (240/255, 52/255, 52/255, 1/255)
+			on_release:start.pressed_button(start.ids.online)
+		StrokeButton:
+			id:ocr_b
+			text:'OCR(B)'
+			size_hint:(.15,.07)
+			pos_hint:{'x':.7,'y':.2}
+			on_release:start.pressed_button(start.ids.ocr_b)
+		StrokeButton:
+			id:ocr_w
+			text:'OCR(W)'
+			size_hint:(.15,.07)
+			pos_hint:{'x':.7,'y':.1}
+			on_release:start.pressed_button(start.ids.ocr_w)
+		Label:
+			id:path
+			text:'Filepath:'
+			pos_hint:{'x':-.25,'y':-.3}
+			font_size:20
+		TextInput:
+			id:txtbx
+			multiline:False
+			pos_hint:{'x':.2,'y':.1}
+			size_hint:(.3,.08)
+			font_size:20
+<NextPage>:
+	id:next
+	FloatLayout:
+		TextInput:
+			id:output
+			multiline:True
+			pos_hint:{'x':.2,'y':.2}
+			size_hint:(.7,.7)
+			font_size:20
+		StrokeButton:
+			id:back
+			text:'Back'
+			size_hint:(.15,.07)
+			pos_hint:{'x':.3,'y':.05}
+			on_release:next.pressed_button(next.ids.back)
+		StrokeButton:
+			id:save
+			text:'Save'
+			size_hint:(.15,.07)
+			pos_hint:{'x':.6,'y':.05}
+			on_release:next.selected1(next.ids.save)
+		Label:
+			id:txt
+			text:'OCR Text:'
+			pos_hint:{'x':-.2,'y':.45}
+			font_size:20
+<MyPopup@Popup>:
+	id:startnew
+	title:'Browse'
+	size:(600, 400)
+	auto_dismiss: False
+	size_hint:(None, None)
+	background:'Images/plain.png'
+	seperate_color:(0,0,0,0)
+	FileChooserIconView:
+		filters:['*.png','*.jpg','*.jpeg','*.tif']
+		id:filechooser
+
+		on_selection:startnew.selected(filechooser.selection)
+		SmoothButton:
+			id:ok
+			text:'OK'
+			size_hint_y:.1
+			on_release:startnew.dismiss()
+	
+
+
+		
+
+				
