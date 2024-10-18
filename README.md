@@ -74,10 +74,9 @@ pip install kivy
 To run the application, navigate to the project directory in your command prompt or terminal and execute:
 
 ```bash
-python main.py
+python OCRApp.py
 ```
 
-Make sure to replace `main.py` with the actual name of your main Python file if it's different.
 
 ## Dependencies
 
