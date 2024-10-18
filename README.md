@@ -7,8 +7,6 @@ This project is an Optical Character Recognition (OCR) application built using P
 - [Installation Instructions](#installation-instructions)
 - [Usage](#usage)
 - [Dependencies](#dependencies)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation Instructions
 
