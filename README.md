@@ -1,4 +1,4 @@
-# OCR Project
+# Optical Character Recognisition
 
 This project is an Optical Character Recognition (OCR) application built using Python, Kivy, OpenCV, and Tesseract. It allows users to extract text from images and display the results in a user-friendly interface.
 
